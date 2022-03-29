@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ssafy.happyhouse.controller.Controller;
 import com.ssafy.happyhouse.dao.UserDao;
+import com.ssafy.happyhouse.dao.UserDaoImpl;
+import com.ssafy.happyhouse.dto.User;
 
 public class UserEditController implements Controller {
 
