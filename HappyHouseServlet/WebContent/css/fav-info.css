@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+
+.add-favorite-title {
+  text-align: center;
+
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity));
+
+  font-size: calc(1.325rem + 0.9vw);
+  font-family: "Black Han Sans", sans-serif;
+}
+
+.btnPos {
+  text-align: center;
+}
