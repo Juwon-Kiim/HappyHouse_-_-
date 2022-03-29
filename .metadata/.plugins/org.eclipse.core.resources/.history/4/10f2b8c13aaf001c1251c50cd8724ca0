@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
-	public User save(User user) {
+	public User save(User user) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -38,17 +38,13 @@ public class UserDaoImpl implements UserDao{
 			pstmt.setString(6, user.getContact());
 			pstmt.executeUpdate();
 			return user;
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			dbUtil.close(pstmt, conn);
 		}
-		return null;
 	}
 
 	@Override
-	public User findById(String id) {
+	public User findById(String id) throws SQLException {
 		User user = null;
 		Connection conn=null;
 		PreparedStatement pstmt = null;
@@ -73,17 +69,14 @@ public class UserDaoImpl implements UserDao{
 						rs.getString("joinDate")
 						);
 			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} 
-		finally {
+		} finally {
 			dbUtil.close(rs, pstmt, conn);
 		}
 		return user;
 	}
 
 	@Override
-	public List<User> findALL() {
+	public List<User> findALL() throws SQLException {
 		List<User> list = new ArrayList<User>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -107,16 +100,14 @@ public class UserDaoImpl implements UserDao{
 						);
 				list.add(user);
 			}
-		} catch(SQLException e) {
-			e.printStackTrace();
 		} finally {
 			dbUtil.close(rs, pstmt, conn);
 		}
-		return null;
+		return list;
 	}
 
 	@Override
-	public int UpdateUser(User updateParam) {
+	public int UpdateUser(User updateParam) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -132,16 +123,13 @@ public class UserDaoImpl implements UserDao{
 			pstmt.setString(5, updateParam.getAddress());
 			pstmt.setString(6, updateParam.getContact());
 			return pstmt.executeUpdate();
-		} catch(SQLException e) {
-			e.printStackTrace();
 		} finally {
 			dbUtil.close(pstmt, conn);
 		}
-		return 0;
 	}
 
 	@Override
-	public int deleteUser(String id){
+	public int deleteUser(String id) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -152,11 +140,8 @@ public class UserDaoImpl implements UserDao{
 			pstmt = conn.prepareStatement(deleteUser.toString());
 			pstmt.setString(1, id);
 			return pstmt.executeUpdate();
-		} catch(SQLException e) {
-			e.printStackTrace();
 		} finally {
 			dbUtil.close(pstmt, conn);
 		}
-		return 0;
 	}
 }

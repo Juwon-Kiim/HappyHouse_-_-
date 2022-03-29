@@ -44,7 +44,6 @@ public class UserDaoImpl implements UserDao{
 		finally {
 			dbUtil.close(pstmt, conn);
 		}
-		return null;
 	}
 
 	@Override
@@ -112,7 +111,7 @@ public class UserDaoImpl implements UserDao{
 		} finally {
 			dbUtil.close(rs, pstmt, conn);
 		}
-		return null;
+		return list;
 	}
 
 	@Override
