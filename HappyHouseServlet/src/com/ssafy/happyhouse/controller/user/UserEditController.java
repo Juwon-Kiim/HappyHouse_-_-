@@ -14,14 +14,15 @@ public class UserEditController implements Controller {
 	
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) {
-		String userId = request.getParameter("userId");
+		String userID = request.getParameter("userID");
 		String userPW = request.getParameter("userPW");
 		String userName = request.getParameter("userName");
-		String email = request.getParameter("address");
+		String address = request.getParameter("address");
+		String email = request.getParameter("email");
 		String contact = request.getParameter("contact");
 		String joinDate = request.getParameter("joinDate");
 		
-		User user = new User(userId, userPW, userName, email, contact, joinDate);
+		User user = new User(userID, userPW, userName, email, address, contact, joinDate);
 		
 		repository.UpdateUser(user);
 	}

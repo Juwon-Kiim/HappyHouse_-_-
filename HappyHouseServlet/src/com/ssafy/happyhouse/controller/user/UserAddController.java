@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ssafy.happyhouse.controller.Controller;
 import com.ssafy.happyhouse.dao.UserDao;
+import com.ssafy.happyhouse.dao.UserDaoImpl;
+import com.ssafy.happyhouse.dto.User;
 
 public class UserAddController implements Controller {
 	
@@ -12,15 +14,15 @@ public class UserAddController implements Controller {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		String userId = request.getParameter("userId");
+		String userID = request.getParameter("userID");
 		String userPW = request.getParameter("userPW");
 		String userName = request.getParameter("userName");
-		String email = request.getParameter("address");
+		String address = request.getParameter("address");
+		String email = request.getParameter("email");
 		String contact = request.getParameter("contact");
 		String joinDate = request.getParameter("joinDate");
 		
-		User user = new User(userId, userPW, userName, email, contact, joinDate);
+		User user = new User(userID, userPW, userName, email, address, contact, joinDate);
 		
 		repository.save(user);
 	}

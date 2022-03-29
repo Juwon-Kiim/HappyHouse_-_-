@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ssafy.happyhouse.controller.Controller;
 import com.ssafy.happyhouse.dao.UserDao;
+import com.ssafy.happyhouse.dao.UserDaoImpl;
 
 public class UserDeleteController implements Controller {
 	
