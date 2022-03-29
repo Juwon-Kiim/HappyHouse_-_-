@@ -81,3 +81,9 @@ java.net.UnknownHostException: jope.ow2.org
 
 !ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2022-03-29 14:29:52.332
 !MESSAGE No repository found at http://download.eclipse.org/technology/m2e/releases/.
+
+!ENTRY org.eclipse.jface.text 2 0 2022-03-29 14:32:39.537
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.jface.text 2 0 2022-03-29 14:32:39.629
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
