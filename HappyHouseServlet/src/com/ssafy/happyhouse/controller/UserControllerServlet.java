@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ssafy.happyhouse.controller.login.LoginController;
+import com.ssafy.happyhouse.controller.login.LogoutController;
 import com.ssafy.happyhouse.controller.user.UserAddController;
 import com.ssafy.happyhouse.controller.user.UserDeleteController;
 import com.ssafy.happyhouse.controller.user.UserDetailController;
@@ -25,6 +27,8 @@ public class UserControllerServlet extends HttpServlet {
 		uriMappingMap.put("/user/edit", new UserEditController());
 		uriMappingMap.put("/user", new UserDetailController());
 		uriMappingMap.put("/user/delete", new UserDeleteController());
+		uriMappingMap.put("/user/login", new LoginController());
+		uriMappingMap.put("/user/logout", new LogoutController());
 	}
 	
 	@Override
