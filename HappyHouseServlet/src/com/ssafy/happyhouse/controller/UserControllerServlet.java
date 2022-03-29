@@ -25,7 +25,7 @@ public class UserControllerServlet extends HttpServlet {
 	public UserControllerServlet() {
 		uriMappingMap.put("/user/add", new UserAddController());
 		uriMappingMap.put("/user/edit", new UserEditController());
-		uriMappingMap.put("/user", new UserDetailController());
+		uriMappingMap.put("/user/detail", new UserDetailController());
 		uriMappingMap.put("/user/delete", new UserDeleteController());
 		uriMappingMap.put("/user/login", new LoginController());
 		uriMappingMap.put("/user/logout", new LogoutController());

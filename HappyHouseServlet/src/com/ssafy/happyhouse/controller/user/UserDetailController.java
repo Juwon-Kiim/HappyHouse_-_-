@@ -1,5 +1,8 @@
 package com.ssafy.happyhouse.controller.user;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,16 +16,10 @@ public class UserDetailController implements Controller {
 	private UserDao repository = UserDaoImpl.getUserDao();
 	
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userID = request.getParameter("userID");
-		String userPW = request.getParameter("userPW");
-		String userName = request.getParameter("userName");
-		String address = request.getParameter("address");
-		String email = request.getParameter("email");
-		String contact = request.getParameter("contact");
-		String joinDate = request.getParameter("joinDate");
-		
-		User user = new User(userID, userPW, userName, email, address, contact, joinDate);
+		User user = repository.findById(userID);
+		request.getRequestDispatcher("/user/user_detail.jsp").forward(request, response);
 	}
 
 }
