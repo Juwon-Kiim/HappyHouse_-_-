@@ -49,22 +49,20 @@ public class UserDaoImpl implements UserDao{
 		try {
 			conn = __.getConnection();
 			StringBuilder findUser = new StringBuilder();
-			findUser.append("select userID, userPW, userName, email, address, contact, joinDate \n");
+			findUser.append("select userID, userPW, userName, email, address, contact \n");
 			findUser.append("from user \n");
 			findUser.append("where userID=? \n");
 			pstmt = conn.prepareStatement(findUser.toString());
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				user = new User(
-						rs.getString("userID"),
-						rs.getString("userPW"),
-						rs.getString("userName"),
-						rs.getString("email"),
-						rs.getString("address"),
-						rs.getString("contact"),
-						rs.getString("joinDate")
-						);
+				user = new User();
+				user.setUserID(rs.getString("userID"));
+				user.setUserPW(rs.getString("userPW"));
+				user.setUserPW(rs.getString("userName"));
+				user.setUserPW(rs.getString("email"));
+				user.setUserPW(rs.getString("address"));
+				user.setUserPW(rs.getString("contact"));
 			}
 		} finally {
 			__.close(rs, pstmt, conn);
@@ -111,14 +109,15 @@ public class UserDaoImpl implements UserDao{
 			conn = __.getConnection();
 			StringBuilder updateUser = new StringBuilder();
 			updateUser.append("update user \n");
-			updateUser.append("set userID=?, userPW=?, userName=?, email=?, address=?, contact=? \n");
+			updateUser.append("set userPW=?, userName=?, email=?, address=?, contact=? \n");
+			updateUser.append("where userID=? \n");
 			pstmt=conn.prepareStatement(updateUser.toString());
-			pstmt.setString(1, updateParam.getUserID());
-			pstmt.setString(2, updateParam.getUserPW());
-			pstmt.setString(3, updateParam.getUserName());
-			pstmt.setString(4, updateParam.getEmail());
-			pstmt.setString(5, updateParam.getAddress());
-			pstmt.setString(6, updateParam.getContact());
+			pstmt.setString(1, updateParam.getUserPW());
+			pstmt.setString(2, updateParam.getUserName());
+			pstmt.setString(3, updateParam.getEmail());
+			pstmt.setString(4, updateParam.getAddress());
+			pstmt.setString(5, updateParam.getContact());
+			pstmt.setString(6, updateParam.getUserID());
 			return pstmt.executeUpdate();
 		} finally {
 			__.close(pstmt, conn);
